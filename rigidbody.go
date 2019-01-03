@@ -201,6 +201,16 @@ func (body *RigidBody) AddRotation(v *m.Vector3) {
 	body.Rotation.Add(v)
 }
 
+// AddTorque accumnulates into the torque in WorldSpace
+func (body *RigidBody) AddTorque(v m.Vector3) {
+	body.torqueAccum.Add(&v)
+}
+
+// AddLocalTorque accumulate a torque express in the local coordinate system
+func (body *RigidBody) AddLocalTorque(v m.Vector3) {
+	body.AddTorque(body.transform.RotateVector(&v))
+}
+
 // ClearAccumulators resets all of the stored linear and torque forces
 // stored in the body.
 func (body *RigidBody) ClearAccumulators() {
