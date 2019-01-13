@@ -201,7 +201,7 @@ func (body *RigidBody) AddRotation(v *m.Vector3) {
 	body.Rotation.Add(v)
 }
 
-// AddTorque accumnulates into the torque in WorldSpace
+// AddTorque accumulates into the torque in WorldSpace
 func (body *RigidBody) AddTorque(v m.Vector3) {
 	body.torqueAccum.Add(&v)
 }
