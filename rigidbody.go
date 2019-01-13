@@ -206,6 +206,11 @@ func (body *RigidBody) AddTorque(v m.Vector3) {
 	body.torqueAccum.Add(&v)
 }
 
+// AddExternalForce accumalates a force express in WordSpace
+func (body *RigidBody) AddExternalForce(f m.Vector3) {
+	body.forceAccum.Add(&f)
+}
+
 // AddLocalTorque accumulate a torque express in the local coordinate system
 func (body *RigidBody) AddLocalTorque(v m.Vector3) {
 	body.AddTorque(body.transform.RotateVector(&v))
